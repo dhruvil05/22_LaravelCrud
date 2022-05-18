@@ -48,8 +48,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>student Contact:</strong>
-                        <input type="text" name="address" class="form-control" placeholder="student Address">
-                        @error('address')
+                        <input type="bigInteger" name="contact" class="form-control" placeholder="student Contact">
+                        @error('contact')
                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
@@ -57,7 +57,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>student DOB:</strong>
-                        <input type="text" name="address" class="form-control" placeholder="student Address">
+                        <input type="date" name="DOB" class="form-control" placeholder="student DOB">
                         @error('address')
                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
@@ -66,8 +66,11 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>student Gender:</strong>
-                        <input type="text" name="address" class="form-control" placeholder="student Address">
-                        @error('address')
+                        <input type="radio" name="gender" class="form-control" placeholder="student gender" value="male">
+                        <input type="radio" name="gender" class="form-control" placeholder="student gender" value="female">
+                        <input type="radio" name="gender" class="form-control" placeholder="student gender" value="other">
+
+                        @error('gender')
                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
@@ -75,8 +78,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>student Country:</strong>
-                        <input type="text" name="address" class="form-control" placeholder="student Address">
-                        @error('address')
+                        <input type="text" name="country" class="form-control" placeholder="student country">
+                        @error('country')
                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
@@ -84,8 +87,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>student FavSport:</strong>
-                        <input type="text" name="address" class="form-control" placeholder="student Address">
-                        @error('address')
+                        <input type="text" name="favSport" class="form-control" placeholder="student favSport">
+                        @error('favSport')
                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
@@ -93,8 +96,8 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>student Image:</strong>
-                        <input type="text" name="address" class="form-control" placeholder="student Address">
-                        @error('address')
+                        <input type="text" name="image" class="form-control" placeholder="student image">
+                        @error('image')
                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>

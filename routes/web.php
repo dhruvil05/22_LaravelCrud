@@ -13,8 +13,8 @@ use App\Http\Controllers\laravelCRUDController;
 |
 */
 
-Route::resource('students', laravelCRUDController::class);
+Route::resource('student', laravelCRUDController::class);
 
-Route::get('/students', function () {
-    return view('create');
+Route::get('/', function () {
+    return view('index');
 });

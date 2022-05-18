@@ -39,7 +39,7 @@ class laravelCRUDController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'contact' => 'required',
+            // 'contact' => 'required',
             'dateOfBirth' => 'required',
             'gender' => 'required',
             'country' => 'required',
@@ -47,17 +47,17 @@ class laravelCRUDController extends Controller
             'image' => 'required',
             'address' => 'required'
         ]);
-        $student = new student;
-        $student->name = $request->name;
-        $student->email = $request->email;
-        $student->contact = $request->contact;
-        $student->dateOfBirth = $request->dateOfBirth;
-        $student->gender = $request->gender;
-        $student->country = $request->country;
-        $student->favSport = $request->favSport;
-        $student->image = $request->image;
-        $student->address = $request->address;
-        $student->save();
+        $students = new student;
+        $students->name = $request->name;
+        $students->email = $request->email;
+        // $student->contact = $request->contact;
+        $students->dateOfBirth = $request->dateOfBirth;
+        $students->gender = $request->gender;
+        $students->country = $request->country;
+        $students->favSport = $request->favSport;
+        $students->image = $request->image;
+        $students->address = $request->address;
+        $students->save();
         return redirect()->route('student.index')
             ->with('success', 'Student has been created successfully.');
     }
@@ -98,7 +98,7 @@ class laravelCRUDController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'contact' => 'required',
+            // 'contact' => 'required',
             'dateOfBirth' => 'required',
             'gender' => 'required',
             'country' => 'required',
@@ -109,7 +109,7 @@ class laravelCRUDController extends Controller
         $student = student::find($id);
         $student->name = $request->name;
         $student->email = $request->email;
-        $student->contact = $request->contact;
+        // $student->contact = $request->contact;
         $student->dateOfBirth = $request->dateOfBirth;
         $student->gender = $request->gender;
         $student->country = $request->country;

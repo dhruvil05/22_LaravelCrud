@@ -13,7 +13,7 @@
 <h2>Laravel 8 CRUD Example Tutorial</h2>
 </div>
 <div class="pull-right mb-2">
-<a class="btn btn-success" href="{{ route('student.create') }}"> Create Student</a>
+<a class="btn btn-success" href="{{ route('student.create') }}"> ADD Student</a>
 </div>
 </div>
 </div>
@@ -27,7 +27,7 @@
 <th>S.No</th>
 <th>Student Name</th>
 <th>Student Email</th>
-<th>Student Contact</th>
+{{-- <th>Student Contact</th> --}}
 <th>Student DOB</th>
 <th>Student Country</th>
 <th>Student FavSport</th>
@@ -37,22 +37,22 @@
 <th>Student UpdatedAt</th>
 <th width="280px">Action</th>
 </tr>
-@foreach ($companies as $students)
+@foreach ($student as $student)
 <tr>
-<td>{{ $students->id }}</td>
-<td>{{ $students->name }}</td>
-<td>{{ $students->email }}</td>
-<td>{{ $students->contact }}</td>
-<td>{{ $students->dateOfBirth }}</td>
-<td>{{ $students->country }}</td>
-<td>{{ $students->favSport }}</td>
-<td>{{ $students->image }}</td>
-<td>{{ $students->address }}</td>
-<td>{{ $students->created_at }}</td>
-<td>{{ $students->updated_at }}</td>
+<td>{{ $student->id }}</td>
+<td>{{ $student->name }}</td>
+<td>{{ $student->email }}</td>
+{{-- <td>{{ $student->contact }}</td> --}}
+<td>{{ $student->dateOfBirth }}</td>
+<td>{{ $student->country }}</td>
+<td>{{ $student->favSport }}</td>
+<td>{{ $student->image }}</td>
+<td>{{ $student->address }}</td>
+<td>{{ $student->created_at }}</td>
+<td>{{ $student->updated_at }}</td>
 <td>
-<form action="{{ route('companies.destroy',$students->id) }}" method="Post">
-<a class="btn btn-primary" href="{{ route('companies.edit',$students->id) }}">Edit</a>
+<form action="{{ route('companies.destroy',$student->id) }}" method="Post">
+<a class="btn btn-primary" href="{{ route('companies.edit',$student->id) }}">Edit</a>
 @csrf
 @method('DELETE')
 <button type="submit" class="btn btn-danger">Delete</button>
