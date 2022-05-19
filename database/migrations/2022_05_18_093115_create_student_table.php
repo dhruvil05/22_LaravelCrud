@@ -17,7 +17,7 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('email', 100);
-            $table->date('dateOfBfirth');
+            $table->date('dateOfBirth');
             $table->enum('gender',["M","F","O"]);
             $table->string('country',100);
             $table->string('favSport', 100);
