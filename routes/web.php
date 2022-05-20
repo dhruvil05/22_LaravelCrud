@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\laravelCRUDController;
+use App\Http\Controllers\RegistrationController;
+use App\Models\Peoples;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +14,11 @@ use App\Http\Controllers\laravelCRUDController;
 |
 */
 
-Route::resource('student', laravelCRUDController::class);
+route::get('/register', [RegistrationController::class, 'index']);
+route::post('/register', [RegistrationController::class, 'register']);
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/people', function(){
+    $peoples= peoples::all();
+    echo "<pre>";
+    print_r($peoples);
 });
