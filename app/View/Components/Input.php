@@ -10,7 +10,6 @@ class Input extends Component
     public $name;
     public $label;
     public $class;
-    
     /**
      * Create a new component instance.
      *

@@ -22,3 +22,15 @@ Route::get('/people', function(){
     echo "<pre>";
     print_r($peoples);
 });
+  
+
+Route::get('/home', function(){
+   
+    return view("home");
+});
+  
+Route::get('/update', function(){
+   
+    return view("update");
+});
+  
