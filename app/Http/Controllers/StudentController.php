@@ -30,7 +30,7 @@ class StudentController extends Controller
             'email' => 'required|email',
             'password' => "required",
             'Cpassword' => 'required|same:password',
-            'dob' => 'required',
+            'dob' => 'required|before:6 years ago',
             'address' => 'required',
             // 'hobby' => 'required'
         ]);
@@ -71,7 +71,7 @@ class StudentController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'dob' => 'required',
+            'dob' => 'required|before:today',
             'address' => 'required',
             // 'hobby' => 'required'
         ]);
