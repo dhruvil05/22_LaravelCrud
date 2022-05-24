@@ -16,9 +16,13 @@
             width: 550px;
             height: 35px;
         }
-        .btn-register{
-            float:right;
-        }
+       .action{
+           display: flex;
+           flex-direction: column;
+       }
+       .action>a{
+           margin-bottom: 5px;
+       }
     </style>
 </head>
 
@@ -32,14 +36,12 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{url('students')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register">Register</a>
+                    <a class="nav-link" href="{{url('add-student')}}">Register</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="update">Update</a>
-                </li>
+              
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">

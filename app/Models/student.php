@@ -4,8 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Controllers\laravelCRUDController;
-class student extends Model
+
+class Student extends Model
 {
     use HasFactory;
+    protected $table = "students";
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'dob',
+        'gender',
+        'fav_sport',
+        'country',
+        'state',
+        'address',
+        'image',
+        'hobby'
+
+    ];
 }

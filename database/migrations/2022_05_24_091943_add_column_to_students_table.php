@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnsToPeoplesTable extends Migration
+class AddColumnToStudentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddColumnsToPeoplesTable extends Migration
      */
     public function up()
     {
-        Schema::table('peoples', function (Blueprint $table) {
-            $table->string('p_state', 50)->nullable()->after('p_country');
+        Schema::table('students', function (Blueprint $table) {
+            
         });
     }
 
@@ -25,7 +25,7 @@ class AddColumnsToPeoplesTable extends Migration
      */
     public function down()
     {
-        Schema::table('peoples', function (Blueprint $table) {
+        Schema::table('students', function (Blueprint $table) {
             //
         });
     }
