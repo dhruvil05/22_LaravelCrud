@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string("name");
             $table->string("email");
-            $table->string("password");
+            $table->string("password")->nullable();
             $table->date("dob")->nullable();
             $table->enum("gender", ["M","F","O"]);
             $table->string("fav_sport")->nullable();
