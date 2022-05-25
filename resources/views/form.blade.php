@@ -8,20 +8,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    @if (session('status'))
-                        <h6 class="alert alert-success">{{session('status')}}</h6>
-                    @endif
                     <div class="card my-3">
                         <div class="card-header">
                             <h1 class="text-center">Student Registration Form</h1>
                         </div>
                         <div class="card-body">
+                            <div class="back">
+                                <a href="{{ url('students') }}" class="btn btn-danger active float-right" role="button"
+                                            aria-pressed="true">Back</a>
+                            </div>
                             <form action="{{ url('/add-student ') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="container">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="string" class="form-control name" name="name" aria-describedby="nameHelp" value="{{old('name')}}">
+                <input type="string" class="form-control name" name="name" aria-describedby="nameHelp" value="{{old('name')}}" placeholder="Enter your Name">
                 <span class="text-danger">
                     @error("name")
                         {{ $message }}
@@ -30,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="string" class="form-control email" name="email" aria-describedby="emailHelp" value="{{old('email')}}">
+                <input type="string" class="form-control email" name="email" aria-describedby="emailHelp" value="{{old('email')}}" placeholder="Enter your Email">
                 <span class="text-danger">
                     @error("email")
                         {{ $message }}
@@ -39,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control password" name="password" aria-describedby="passwordHelp">
+                <input type="password" class="form-control password" name="password" aria-describedby="passwordHelp" placeholder="Enter Password">
                 <span class="text-danger">
                     @error("password")
                         {{ $message }}
@@ -48,7 +49,7 @@
             </div>
             <div class="form-group">
                 <label for="password">Comfirm Password</label>
-                <input type="password" class="form-control cpassword" name="Cpassword" aria-describedby="cpasswordHelp">
+                <input type="password" class="form-control cpassword" name="Cpassword" aria-describedby="cpasswordHelp" placeholder="Comfirm Password">
                 <span class="text-danger">
                     @error("Cpassword")
                         {{ $message }}
@@ -57,7 +58,7 @@
             </div>
             <div class="form-group">
                 <label for="dob">Date of Birth</label>
-                <input type="date" class="form-control dob" name="dob" aria-describedby="dobHelp" value="{{old('dob')}}">
+                <input type="date" class="form-control dob" name="dob" aria-describedby="dobHelp" value="{{old('dob')}}" placeholder="Select Birth Date">
                 <span class="text-danger">
                     @error("dob")
                         {{ $message }}
@@ -80,8 +81,8 @@
                     </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="gender2" value="O">
-                    <label class="form-check-label" for="gender2">
+                    <input class="form-check-input" type="radio" name="gender" id="gender3" value="O">
+                    <label class="form-check-label" for="gender3">
                         Other
                     </label>
                 </div>
@@ -141,7 +142,7 @@
             
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control address" name="address" aria-describedby="addressHelp" value="{{old('address')}}">
+                <input type="text" class="form-control address" name="address" aria-describedby="addressHelp" value="{{old('address')}}" placeholder="Enter your Address">
                 <span class="text-danger">
                     @error("address")
                         {{ $message }}
@@ -156,14 +157,16 @@
             </div> 
             <div class="form-group">
                 <label for="hobby">Enter your Hobbies</label>
-                <input type="string" class="form-control hobby" name="hobby" aria-describedby="hobbyHelp" value="{{old('hobby')}}">
+                <input type="string" class="form-control hobby" name="hobby" aria-describedby="hobbyHelp" value="{{old('hobby')}}" placeholder="Enter your hobbies">
               
             </div>
            
 
             <br>
-            <button class="btn btn-primary my-3">Submit</button>
-            <a href="{{url('students')}}" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Cancel</a>
+            <div class="btns">
+                <button class="btn btn-primary my-3">Submit</button>
+                <a href="{{url('students')}}" class="btn btn-secondary active float-right" role="button" aria-pressed="true">Cancel</a>
+            </div>
 
         </div>
     </form>

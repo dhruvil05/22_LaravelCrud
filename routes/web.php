@@ -15,6 +15,8 @@ Route:: post('add-student', [StudentController::class, 'store']);
 
 Route:: get('edit-student/{id}', [StudentController::class, 'edit']);
 
-Route:: PUT('update-student/{id}', [StudentController::class, 'update']);
+Route:: post('update-student/{id}', [StudentController::class, 'update']);
 
 Route:: get('delete-student/{id}', [StudentController::class, 'delete']);
+
+Route::get("/search", [StudentController::class, 'index']);

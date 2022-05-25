@@ -9,10 +9,19 @@
     </div> --}}
 
 
-
+    <div class="container my-2">
+        @if (session('status'))
+            <h6 class="alert alert-success">{{ session('status') }}</h6>
+        @endif
+        @if (session('failed'))
+            <h6 class="alert alert-danger">{{ session('failed') }}</h6>
+        @endif
+    </div>
+  
     <div class="container my-3">
 
         <h4>Laravel CRUd
+        
             <a href="{{ url('add-student') }}" class="btn btn-primary float-right">Add Student</a>
         </h4>
     </div>
@@ -56,8 +65,8 @@
                         <td>{{ $item->hobby }}</td>
                         <td class="action">
                             <a href="{{ url('edit-student/' . $item->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="{{ url('delete-student/' . $item->id) }}" class="btn btn-danger btn-sm"
-                                onclick="comfirm('are you sure?')">Delete</a>
+                            <a href="{{ url('delete-student/' . $item->id) }}" onclick="return confirm('are you sure?')"
+                                class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                 @endforeach

@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\File;
 
 class StudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $student = Student::all();
+
         return view('home', compact('student'));
     }
 
@@ -22,7 +23,8 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
-
+       
+        
         // echo "<pre>";
         // print_r($request->all());
         $request->validate([
@@ -55,7 +57,7 @@ class StudentController extends Controller
         }
         $student->save();
 
-        return redirect()->back()->with('status', 'Student Data Added Successfully');
+        return redirect('students')->with('status', 'Student Data Added Successfully');
     }
 
     public function edit($id)
@@ -66,25 +68,30 @@ class StudentController extends Controller
 
     public function update(Request $request, $id)
     {
-        $student = Student::find($id);
+        // $student = Student::find($id);
+
+        // echo "<pre>";
+        // print_r($request->all());
+
 
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'dob' => 'required|before:today',
+            'dob' => 'required|before:6 years ago',
             'address' => 'required',
-            // 'hobby' => 'required'
+
         ]);
-        $student = new Student;
-        $student->name = $request['name'];
-        $student->email = $request['email'];
-        $student->dob = $request['dob'];
-        $student->gender = $request['gender'];
-        $student->fav_sport = $request['favsport'];
-        $student->country = $request['country'];
-        $student->state = $request['state'];
-        $student->address = $request['address'];
-        $student->hobby = $request['hobby'];
+
+        $student = Student::find($id);
+        $student->name = $request->input('name');
+        $student->email = $request->input('email');
+        $student->dob = $request->input('dob');
+        $student->gender = $request->input('gender');
+        $student->fav_sport = $request->input('favsport');
+        $student->country = $request->input('country');
+        $student->state = $request->input('state');
+        $student->address = $request->input('address');
+        $student->hobby = $request->input('hobby');
 
         if ($request->hasFile('image')) {
             $destination = 'uploads/cover/' . $student->image;
@@ -97,19 +104,26 @@ class StudentController extends Controller
             $file->move('uploads/cover/', $filename);
             $student->image = $filename;
         }
-        $student->update();
 
-        return redirect()->back()->with('status', 'Student Data Updated Successfully');
+        if ($student->update()) {
+
+            return redirect('students')->with('status', 'Student Data Updated Successfully');
+        } else {
+
+            return redirect('students')->with('failed', 'Student Data not Updated ');
+        }
     }
 
     public function delete($id)
     {
         $student = Student::find($id);
         $destination = 'uploads/cover/' . $student->image;
+
+
         if (File::exists($destination)) {
             File::delete($destination);
         }
         $student->delete();
-        return redirect()->back()->with('status', 'Student Image Deleted Successfully');
+        return redirect('students')->with('status', 'Student Data Deleted Successfully');
     }
 }
