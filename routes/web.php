@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 
 Route::get('students', [StudentController::class, 'index']);
 
-Route::get('add-student', [StudentController::class, 'create']);
+Route::get('student/add-student', [StudentController::class, 'create']);
 
 Route::post('add-student', [StudentController::class, 'store']);
 
-Route::get('edit-student/{id}', [StudentController::class, 'edit']);
+Route::get('student/edit-student/{id}', [StudentController::class, 'edit']);
 
 Route::post('update-student/{id}', [StudentController::class, 'update']);
 

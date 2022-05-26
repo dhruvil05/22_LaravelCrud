@@ -9,7 +9,7 @@
     </div> --}}
 
 
-    <div class="container my-2">
+    <div class="session my-2">
         @if (session('status'))
             <h6 class="alert alert-success">{{ session('status') }}</h6>
         @endif
@@ -22,14 +22,14 @@
 
         <h4>Laravel CRUd
 
-            <a href="{{ url('add-student') }}" class="btn btn-primary float-right">Add Student</a>
+            <a href="{{ url('student/add-student') }}" class="btn btn-primary float-right">Add Student</a>
         </h4>
     </div>
 
-    <div class="display my-4">
+    {{-- <div class="display my-4"> --}}
 
 
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped my-4">
             <thead>
                 <tr>
 
@@ -75,7 +75,7 @@
                         </td>
                         <td>{{ $item->hobby }}</td>
                         <td class="action">
-                            <a href="{{ url('edit-student/' . $item->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="{{ url('student/edit-student/' . $item->id) }}" class="btn btn-primary btn-sm">Edit</a>
                             <a href="{{ url('delete-student/' . $item->id) }}" onclick="return confirm('are you sure?')"
                                 class="btn btn-danger btn-sm">Delete</a>
                         </td>
@@ -83,5 +83,5 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
+    {{-- </div> --}}
 @endsection
