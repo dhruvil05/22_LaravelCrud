@@ -29,8 +29,8 @@ class Student extends Model
         $this->attributes['name'] = ucwords($value);
     }
 
-    public function getDobAttribute($value)
-    {
-        return date("d/m/Y", strtotime($value));
-    }
+    // public function getDobAttribute($value)
+    // {
+    //     return date("d/m/Y", strtotime($value));
+    // }
 }

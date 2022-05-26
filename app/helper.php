@@ -18,4 +18,18 @@
         }
     }
 
+    if(!function_exists('get_formatter_gender')){
+        function get_formatter_gender($data){
+            if($data=="M"){
+                echo "Male";
+            }
+            elseif($data=="F"){
+                echo "Female";
+            }
+            else{
+                echo "Other";
+            }
+        }
+    }
+
 ?>
