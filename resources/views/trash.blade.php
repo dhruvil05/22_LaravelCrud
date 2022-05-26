@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @push('title')
-    <title>LaravelCRUD</title>
+    <title>Trash</title>
 @endpush
 @section('main.section')
     {{-- <div class="btn-register my-4">
@@ -22,8 +22,10 @@
 
         <h4>Laravel CRUd
 
-            <a href="{{ url('student/add-student') }}" class="btn btn-primary float-right">Add Student</a>
-            <a href="{{ url('students/trash') }}" class="btn btn-danger float-right mr-3">Go To Trash</a>
+            {{-- <a href="{{ url('add-student') }}" class="btn btn-primary float-right">Add Student</a> --}}
+            <a href="{{ url('students') }}" class="btn btn-success float-right mr-3">Student View</a>
+
+
         </h4>
     </div>
 
@@ -76,9 +78,9 @@
                         </td>
                         <td>{{ $item->hobby }}</td>
                         <td class="action">
-                            <a href="{{ url('student/edit-student/' . $item->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="{{ url('trash-student/' . $item->id) }}" onclick="return confirm('move to Trash?')"
-                                class="btn btn-danger btn-sm">Trash</a>
+                            <a href="{{ url('trash/restore/' . $item->id) }}" class="btn btn-success btn-sm">Restore</a>
+                            <a href="{{ url('trash/force-delete/' . $item->id) }}" onclick="return confirm('are you sure?')"
+                                class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                 @endforeach

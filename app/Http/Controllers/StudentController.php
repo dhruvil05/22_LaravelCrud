@@ -23,7 +23,7 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
-       
+
         // p($request->all()); 
         // <--- or --->
         // echo "<pre>";
@@ -115,16 +115,49 @@ class StudentController extends Controller
         }
     }
 
-    public function delete($id)
+    public function trashView()
+    {
+        $student = Student::onlyTrashed()->get();
+        $data = compact('student');
+        return view('trash')->with($data);
+    }
+
+    public function trash($id)
     {
         $student = Student::find($id);
+        // $destination = 'uploads/cover/' . $student->image;
+
+
+        // if (File::exists($destination)) {
+        //     File::delete($destination);
+        // }
+        $student->delete();
+        return redirect('students')->with('status', 'Student Data Moved to Trash Successfully');
+    }
+
+    public function forceDelete($id)
+    {
+        $student = Student::withTrashed()->find($id);
         $destination = 'uploads/cover/' . $student->image;
 
 
         if (File::exists($destination)) {
-            File::delete($destination);
+            File::forceDelete($destination);
         }
-        $student->delete();
+        $student->forceDelete();
         return redirect('students')->with('status', 'Student Data Deleted Successfully');
+    }
+
+    public function restore($id)
+    {
+        $student = Student::withTrashed()->find($id);
+        // $destination = 'uploads/cover/' . $student->image;
+
+
+        // if (File::exists($destination)) {
+        //     File::restore($destination);
+        // }
+        $student->restore();
+        return redirect()->back()->with('status', 'Student Data Restored Successfully');
     }
 }

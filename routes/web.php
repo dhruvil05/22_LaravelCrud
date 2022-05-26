@@ -10,17 +10,24 @@ use Illuminate\Http\Request;
 
 Route::get('students', [StudentController::class, 'index']);
 
-Route::get('add-student', [StudentController::class, 'create']);
+Route::get('student/add-student', [StudentController::class, 'create']);
 
 Route::post('add-student', [StudentController::class, 'store']);
 
-Route::get('edit-student/{id}', [StudentController::class, 'edit']);
+Route::get('student/edit-student/{id}', [StudentController::class, 'edit']);
 
 Route::post('update-student/{id}', [StudentController::class, 'update']);
 
-Route::get('delete-student/{id}', [StudentController::class, 'delete']);
+Route::get('trash-student/{id}', [StudentController::class, 'trash']);
 
-Route::get("/search", [StudentController::class, 'index']);
+Route::get('trash/force-delete/{id}', [StudentController::class, 'forceDelete']);
+
+Route::get('trash/restore/{id}', [StudentController::class, 'restore']);
+
+Route::get('students/trash', [StudentController::class, 'trashView']);
+
+
+// Route::get("/search", [StudentController::class, 'index']);
 
 
 Route::get('get-all-session', function () {
@@ -28,7 +35,7 @@ Route::get('get-all-session', function () {
     p($session);
 });
 Route::get('set-session', function (Request $request) {
-    $request->session()->put('nav', 'CRUD'); 
+    $request->session()->put('nav', 'CRUD');
     $request->session()->put('id', '123');
     return redirect('get-all-session');
 });
