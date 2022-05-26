@@ -1,6 +1,6 @@
 @include('layouts.header')
 
-<div class="container">
+<div class="main mx-4">
     @yield('main.section')
 
 </div>

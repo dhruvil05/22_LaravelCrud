@@ -44,10 +44,10 @@
             text-align: center;
         }
 
-        table {
+        /* table {
             position: relative;
             right: 62px;
-        }
+        } */
 
     </style>
 </head>
