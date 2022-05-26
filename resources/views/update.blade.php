@@ -70,9 +70,9 @@
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" id="gender2"
+                                        <input class="form-check-input" type="radio" name="gender" id="gender3"
                                             @if ($student->gender == 'O') checked @endif value="O">
-                                        <label class="form-check-label" for="gender2">
+                                        <label class="form-check-label" for="gender3">
                                             Other
                                         </label>
                                     </div>

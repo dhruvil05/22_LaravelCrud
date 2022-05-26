@@ -38,12 +38,21 @@
         .back{
             height: 60px;
         }
+        th{
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{{ url('students') }}">CRUD</a>
+        <a class="navbar-brand" href="{{ url('students') }}">
+        @if (session()->has('nav'))
+            {{session()->get('nav')}}
+        @else
+            Guest
+        @endif
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

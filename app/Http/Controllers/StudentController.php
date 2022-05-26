@@ -24,7 +24,8 @@ class StudentController extends Controller
     public function store(Request $request)
     {
        
-        
+        // p($request->all()); 
+        // <--- or --->
         // echo "<pre>";
         // print_r($request->all());
         $request->validate([

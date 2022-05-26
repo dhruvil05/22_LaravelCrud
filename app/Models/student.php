@@ -23,4 +23,14 @@ class Student extends Model
         'hobby'
 
     ];
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = ucwords($value);
+    }
+
+    public function getDobAttribute($value)
+    {
+        return date("d/m/Y", strtotime($value));
+    }
 }
