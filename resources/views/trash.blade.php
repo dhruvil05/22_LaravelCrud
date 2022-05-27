@@ -37,7 +37,7 @@
                 <a href="{{ url('students') }}" class="btn btn-success float-right mr-3">Student View</a>
             </div>
         </div>
-       
+
         {{-- <h4>Laravel CRUd --}}
 
         {{-- <a href="{{ url('add-student') }}" class="btn btn-primary float-right">Add Student</a> --}}
@@ -48,7 +48,7 @@
 
     <div class="display my-4">
 
-
+       
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>

@@ -43,8 +43,19 @@
         th {
             text-align: center;
         }
-        tr>td{
+
+        tr>td {
             font-size: 12px;
+        }
+
+        .page {
+            width: 50px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            border: 2px solid black;
+            border-radius: 20px;
+            margin-left: 5px;
         }
 
         /* table {

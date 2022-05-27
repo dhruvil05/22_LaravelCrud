@@ -37,41 +37,19 @@
                 <a href="{{ url('student/add-student') }}" class="btn btn-primary float-right">Add Student</a>
                 <a href="{{ url('students/trash') }}" class="btn btn-danger float-right mr-3">Go To Trash</a>
             </div>
-
         </div>
-        {{-- <div class="row d-flex align-items-center">
-            <div class="">
-
-                <a href="{{ url('student/add-student') }}" class="btn btn-primary float-right">Add Student</a>
-                <a href="{{ url('students/trash') }}" class="btn btn-danger float-right mr-3">Go To Trash</a>
-            </div>
-            <form action="" class="col-9 d-flex justify-content-end" style="margin: auto">
-                <div class="form-group d-flex justify-content-end">
-                    <input type="search" name="search" id="" class="form-control mr-2" placeholder="Search by "
-                        value="{{ $search }}" />
-                    <button class="btn btn-primary mr-2">Search</button>
-                    <a href="{{ url('students') }}">
-                        <button class="btn btn-primary " type="button">Reset</button>
-                    </a>
-                </div>
-
-            </form>
-        </div> --}}
-
     </div>
-
-    {{-- <div class="container my-3">
-
-        <h4>Laravel CRUd
-
-            <a href="{{ url('student/add-student') }}" class="btn btn-primary float-right">Add Student</a>
-            <a href="{{ url('students/trash') }}" class="btn btn-danger float-right mr-3">Go To Trash</a>
-        </h4>
-    </div> --}}
 
     <div class="display my-4">
 
-
+        <div class="row">
+            {{ $student->links() }}
+            @if ($page == ""  )
+                <p class="page">1</p>
+            @else
+                <p class="page">{{ $page }}</p>
+            @endif
+        </div>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -127,5 +105,15 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="row">
+            {{ $student->links() }}
+
+            @if ($page =="")
+                <p class="page">1</p>
+            @else
+                <p class="page">{{ $page }}</p>
+            @endif
+
+        </div>
     </div>
 @endsection

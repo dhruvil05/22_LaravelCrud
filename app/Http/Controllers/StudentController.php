@@ -10,16 +10,17 @@ use Illuminate\Support\Facades\File;
 class StudentController extends Controller
 {
     public function index(Request $request)
-    {
+    {   
+        $page = $request['page'];
         $search = $request['search'] ?? "";
         if ($search != "") {
             $student = Student::where("name", "LIKE", "%$search%")->orWhere("email", "LIKE", "%$search%")->orWhere("gender", "LIKE", "%$search%")->orWhere("dob", "LIKE", "%$search%")->orWhere("fav_sport", "LIKE", "%$search%")->orWhere("country", "LIKE", "%$search%")->orWhere("state", "LIKE", "%$search%")->orWhere("address", "LIKE", "%$search%")->orWhere("hobby", "LIKE", "%$search%")->get();
         } else {
 
-            $student = Student::all();
+            $student = Student::simplePaginate(15);
         }
 
-        return view('home', compact('student', 'search'));
+        return view('home', compact('student', 'search', 'page'));
     }
 
     public function create()
@@ -123,6 +124,7 @@ class StudentController extends Controller
 
     public function trashView(Request $request)
     {
+        
         $search = $request['search'] ?? "";
         if ($search != "") {
             $student = Student::onlyTrashed()->where("name", "LIKE", "%$search%")->orWhere("email", "LIKE", "%$search%")->orWhere("gender", "LIKE", "%$search%")->orWhere("dob", "LIKE", "%$search%")->orWhere("fav_sport", "LIKE", "%$search%")->orWhere("country", "LIKE", "%$search%")->orWhere("state", "LIKE", "%$search%")->orWhere("address", "LIKE", "%$search%")->orWhere("hobby", "LIKE", "%$search%")->get();
@@ -130,10 +132,10 @@ class StudentController extends Controller
 
             $student = Student::onlyTrashed()->get();
         }
-        $data = compact('student');
-        return view('trash', compact('data', 'student', 'search'));
+        $data = compact('student', 'search');
+        // return view('trash', compact( 'student', 'search', 'page'));
 
-        // return view('trash')->with($data);
+        return view('trash')->with($data);
     }
 
     public function trash($id)
