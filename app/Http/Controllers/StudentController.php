@@ -11,9 +11,15 @@ class StudentController extends Controller
 {
     public function index(Request $request)
     {
-        $student = Student::all();
+        $search = $request['search']?? "";
+        if($search != ""){
+            $student = Student::where('name', "LIKE", "%$search%")->orWhere('email', "LIKE", "%$search%")->orWhere('gender', "LIKE", "%$search%")->orWhere('dob', "LIKE", "%$search%")->orWhere('fav_sport', "LIKE", "%$search%")->orWhere('country', "LIKE", "%$search%")->orWhere('state', "LIKE", "%$search%")->orWhere('address', "LIKE", "%$search%")->orWhere('hobby', "LIKE", "%$search%") ->get(); 
+        }else{
 
-        return view('home', compact('student'));
+            $student = Student::all();
+        }
+
+        return view('home', compact('student', 'search'));
     }
 
     public function create()
