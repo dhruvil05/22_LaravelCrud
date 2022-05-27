@@ -28,8 +28,8 @@
 
     {{-- <div class="display my-4"> --}}
 
-
-        <table class="table table-bordered table-striped my-4">
+        <div class="table-responsive">
+        <table class="table table-bordered table-striped my-4 " style="">
             <thead>
                 <tr>
 
@@ -83,5 +83,5 @@
                 @endforeach
             </tbody>
         </table>
-    {{-- </div> --}}
+    </div>
 @endsection
