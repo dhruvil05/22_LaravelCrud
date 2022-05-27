@@ -20,7 +20,7 @@
 
     <div class="container my-3">
         <div class="row">
-            
+
             <h4>Laravel CRUd</h4>
             <form action="" class="col-9" style="margin: auto">
                 <div class="form-group d-flex justify-content-center">
@@ -44,6 +44,10 @@
     {{-- <div class="display my-4"> --}}
 
     <div class="table-responsive">
+        <div class="row">
+            {{ $student->links() }}
+            <p class="page">{{ $page }}</p>
+        </div>
         <table class="table table-bordered table-striped my-4 " style="">
             <thead>
                 <tr>
@@ -99,5 +103,12 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div class="row">
+            {{ $student->links() }}
+
+            <p class="page">{{ $page }}</p>
+
+        </div>
     </div>
 @endsection
