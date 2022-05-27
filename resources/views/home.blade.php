@@ -17,15 +17,57 @@
             <h6 class="alert alert-danger">{{ session('failed') }}</h6>
         @endif
     </div>
-
     <div class="container my-3">
+        <div class="row d-flex justify-content-between">
+
+            <h4>Laravel CRUd</h4>
+            <form action="" class="col-7 d-flex justify-content-center" style="margin: auto">
+                <div class="form-group d-flex justify-content-end">
+                    <input type="search" name="search" id="" class="form-control mr-2" placeholder="Search by "
+                        value="{{ $search }}" />
+                    <button class="btn btn-primary mr-2">Search</button>
+                    <a href="{{ url('students') }}">
+                        <button class="btn btn-primary " type="button">Reset</button>
+                    </a>
+                </div>
+
+            </form>
+            <div class="">
+
+                <a href="{{ url('student/add-student') }}" class="btn btn-primary float-right">Add Student</a>
+                <a href="{{ url('students/trash') }}" class="btn btn-danger float-right mr-3">Go To Trash</a>
+            </div>
+
+        </div>
+        {{-- <div class="row d-flex align-items-center">
+            <div class="">
+
+                <a href="{{ url('student/add-student') }}" class="btn btn-primary float-right">Add Student</a>
+                <a href="{{ url('students/trash') }}" class="btn btn-danger float-right mr-3">Go To Trash</a>
+            </div>
+            <form action="" class="col-9 d-flex justify-content-end" style="margin: auto">
+                <div class="form-group d-flex justify-content-end">
+                    <input type="search" name="search" id="" class="form-control mr-2" placeholder="Search by "
+                        value="{{ $search }}" />
+                    <button class="btn btn-primary mr-2">Search</button>
+                    <a href="{{ url('students') }}">
+                        <button class="btn btn-primary " type="button">Reset</button>
+                    </a>
+                </div>
+
+            </form>
+        </div> --}}
+
+    </div>
+
+    {{-- <div class="container my-3">
 
         <h4>Laravel CRUd
 
             <a href="{{ url('student/add-student') }}" class="btn btn-primary float-right">Add Student</a>
             <a href="{{ url('students/trash') }}" class="btn btn-danger float-right mr-3">Go To Trash</a>
         </h4>
-    </div>
+    </div> --}}
 
     <div class="display my-4">
 
@@ -53,8 +95,8 @@
 
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
-                        <td>{{get_formatter_gender($item->gender)}}
-                            {{-- @if ($item->gender =='M')
+                        <td>{{ get_formatter_gender($item->gender) }}
+                            {{-- @if ($item->gender == 'M')
                                 {{ 'Male' }}
                             @elseif ($item->gender =='F')
                                 {{ 'Female' }}
@@ -76,7 +118,8 @@
                         </td>
                         <td>{{ $item->hobby }}</td>
                         <td class="action">
-                            <a href="{{ url('student/edit-student/' . $item->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="{{ url('student/edit-student/' . $item->id) }}"
+                                class="btn btn-primary btn-sm">Edit</a>
                             <a href="{{ url('trash-student/' . $item->id) }}" onclick="return confirm('move to Trash?')"
                                 class="btn btn-danger btn-sm">Trash</a>
                         </td>

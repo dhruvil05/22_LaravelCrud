@@ -19,14 +19,31 @@
     </div>
 
     <div class="container my-3">
+        <div class="row d-flex justify-content-between">
+            <h4>Laravel CRUd</h4>
+            <form action="" class="col-6 d-flex justify-content-center " style="margin: auto">
+                <div class="form-group d-flex justify-content-end mr-3">
+                    <input type="search" name="search" id="" class="form-control mr-2" placeholder="Search by "
+                        value="{{ $search }}" />
+                    <button class="btn btn-primary mr-2">Search</button>
+                    <a href="{{ url('students/trash') }}">
+                        <button class="btn btn-primary " type="button">Reset</button>
+                    </a>
+                </div>
 
-        <h4>Laravel CRUd
+            </form>
+            <div>
 
-            {{-- <a href="{{ url('add-student') }}" class="btn btn-primary float-right">Add Student</a> --}}
-            <a href="{{ url('students') }}" class="btn btn-success float-right mr-3">Student View</a>
+                <a href="{{ url('students') }}" class="btn btn-success float-right mr-3">Student View</a>
+            </div>
+        </div>
+       
+        {{-- <h4>Laravel CRUd --}}
+
+        {{-- <a href="{{ url('add-student') }}" class="btn btn-primary float-right">Add Student</a> --}}
 
 
-        </h4>
+        {{-- </h4> --}}
     </div>
 
     <div class="display my-4">
@@ -55,8 +72,8 @@
 
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
-                        <td>{{get_formatter_gender($item->gender)}}
-                            {{-- @if ($item->gender =='M')
+                        <td>{{ get_formatter_gender($item->gender) }}
+                            {{-- @if ($item->gender == 'M')
                                 {{ 'Male' }}
                             @elseif ($item->gender =='F')
                                 {{ 'Female' }}
@@ -79,8 +96,8 @@
                         <td>{{ $item->hobby }}</td>
                         <td class="action">
                             <a href="{{ url('trash/restore/' . $item->id) }}" class="btn btn-success btn-sm">Restore</a>
-                            <a href="{{ url('trash/force-delete/' . $item->id) }}" onclick="return confirm('are you sure?')"
-                                class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ url('trash/force-delete/' . $item->id) }}"
+                                onclick="return confirm('are you sure?')" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                 @endforeach
