@@ -43,7 +43,9 @@
         th {
             text-align: center;
         }
-
+        tr>td{
+            font-size: 12px;
+        }
         /* table {
             position: relative;
             right: 62px;
