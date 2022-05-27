@@ -46,7 +46,11 @@
     <div class="table-responsive">
         <div class="row">
             {{ $student->links() }}
-            <p class="page">{{ $page }}</p>
+            @if ($page == '')
+                <p class="page">1</p>
+            @else
+                <p class="page">{{ $page }}</p>
+            @endif
         </div>
         <table class="table table-bordered table-striped my-4 " style="">
             <thead>
@@ -106,8 +110,11 @@
 
         <div class="row">
             {{ $student->links() }}
-
-            <p class="page">{{ $page }}</p>
+            @if ($page == '')
+                <p class="page">1</p>
+            @else
+                <p class="page">{{ $page }}</p>
+            @endif
 
         </div>
     </div>
