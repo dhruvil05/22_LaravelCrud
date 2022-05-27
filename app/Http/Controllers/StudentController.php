@@ -14,7 +14,7 @@ class StudentController extends Controller
         $page = $request['page'];
         $search = $request['search']?? "";
         if($search != ""){
-            $student = Student::where('name', "LIKE", "%$search%")->orWhere('email', "LIKE", "%$search%")->orWhere('gender', "LIKE", "%$search%")->orWhere('dob', "LIKE", "%$search%")->orWhere('fav_sport', "LIKE", "%$search%")->orWhere('country', "LIKE", "%$search%")->orWhere('state', "LIKE", "%$search%")->orWhere('address', "LIKE", "%$search%")->orWhere('hobby', "LIKE", "%$search%") ->paginate(); 
+            $student = Student::where('name', "LIKE", "%$search%")->orWhere('email', "LIKE", "%$search%")->orWhere('gender', "LIKE", "%$search%")->orWhere('dob', "LIKE", "%$search%")->orWhere('fav_sport', "LIKE", "%$search%")->orWhere('country', "LIKE", "%$search%")->orWhere('state', "LIKE", "%$search%")->orWhere('address', "LIKE", "%$search%")->orWhere('hobby', "LIKE", "%$search%") ->simplePaginate(); 
         }else{
 
             $student = Student::simplePaginate(15);
