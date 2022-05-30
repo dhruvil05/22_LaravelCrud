@@ -4,23 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
-
+use Yajra\DataTables\Facades\Datatables;
 use Illuminate\Support\Facades\File;
 
 class StudentController extends Controller
 {
     public function index(Request $request)
-    {
-        $page = $request['page'];
-        $search = $request['search']?? "";
-        if($search != ""){
-            $student = Student::where('name', "LIKE", "%$search%")->orWhere('email', "LIKE", "%$search%")->orWhere('gender', "LIKE", "%$search%")->orWhere('dob', "LIKE", "%$search%")->orWhere('fav_sport', "LIKE", "%$search%")->orWhere('country', "LIKE", "%$search%")->orWhere('state', "LIKE", "%$search%")->orWhere('address', "LIKE", "%$search%")->orWhere('hobby', "LIKE", "%$search%")->orderByDesc('created_at')->simplePaginate(); 
-        }else{
-
-            $student = Student::orderByDesc('created_at')->simplePaginate(15);
+    {   
+        if ($request->ajax()) {
+            $data = Student::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
         }
+        // $page = $request['page'];
+        // $search = $request['search']?? "";
+        // if($search != ""){
+        //     $student = Student::where('name', "LIKE", "%$search%")->orWhere('email', "LIKE", "%$search%")->orWhere('gender', "LIKE", "%$search%")->orWhere('dob', "LIKE", "%$search%")->orWhere('fav_sport', "LIKE", "%$search%")->orWhere('country', "LIKE", "%$search%")->orWhere('state', "LIKE", "%$search%")->orWhere('address', "LIKE", "%$search%")->orWhere('hobby', "LIKE", "%$search%")->orderByDesc('created_at')->simplePaginate(); 
+        // }else{
 
-        return view('home', compact('student', 'search', 'page'));
+        //     $student = Student::orderByDesc('created_at')->simplePaginate(15);
+        // }
+
+        // return view('home', compact('student', 'search', 'page'));
     }
 
     public function create()
