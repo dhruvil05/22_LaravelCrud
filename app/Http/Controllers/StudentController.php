@@ -14,10 +14,10 @@ class StudentController extends Controller
         $page = $request['page'];
         $search = $request['search'] ?? "";
         if ($search != "") {
-            $student = Student::where("name", "LIKE", "%$search%")->orWhere("email", "LIKE", "%$search%")->orWhere("gender", "LIKE", "%$search%")->orWhere("dob", "LIKE", "%$search%")->orWhere("fav_sport", "LIKE", "%$search%")->orWhere("country", "LIKE", "%$search%")->orWhere("state", "LIKE", "%$search%")->orWhere("address", "LIKE", "%$search%")->orWhere("hobby", "LIKE", "%$search%")->simplePaginate();
+            $student = Student::where("name", "LIKE", "%$search%")->orWhere("email", "LIKE", "%$search%")->orWhere("gender", "LIKE", "%$search%")->orWhere("dob", "LIKE", "%$search%")->orWhere("fav_sport", "LIKE", "%$search%")->orWhere("country", "LIKE", "%$search%")->orWhere("state", "LIKE", "%$search%")->orWhere("address", "LIKE", "%$search%")->orWhere("hobby", "LIKE", "%$search%")->orderByDesc('created_at')->simplePaginate();
         } else {
 
-            $student = Student::simplePaginate(15);
+            $student = Student::orderByDesc('created_at')->simplePaginate(15);
         }
 
         return view('home', compact('student', 'search', 'page'));
@@ -127,10 +127,10 @@ class StudentController extends Controller
         
         $search = $request['search'] ?? "";
         if ($search != "") {
-            $student = Student::onlyTrashed()->where("name", "LIKE", "%$search%")->orWhere("email", "LIKE", "%$search%")->orWhere("gender", "LIKE", "%$search%")->orWhere("dob", "LIKE", "%$search%")->orWhere("fav_sport", "LIKE", "%$search%")->orWhere("country", "LIKE", "%$search%")->orWhere("state", "LIKE", "%$search%")->orWhere("address", "LIKE", "%$search%")->orWhere("hobby", "LIKE", "%$search%")->get();
+            $student = Student::onlyTrashed()->where("name", "LIKE", "%$search%")->orWhere("email", "LIKE", "%$search%")->orWhere("gender", "LIKE", "%$search%")->orWhere("dob", "LIKE", "%$search%")->orWhere("fav_sport", "LIKE", "%$search%")->orWhere("country", "LIKE", "%$search%")->orWhere("state", "LIKE", "%$search%")->orWhere("address", "LIKE", "%$search%")->orWhere("hobby", "LIKE", "%$search%")->orderByDesc('deleted_at')->get();
         } else {
 
-            $student = Student::onlyTrashed()->get();
+            $student = Student::onlyTrashed()->orderByDesc('deleted_at')->get();
         }
         $data = compact('student', 'search');
         // return view('trash', compact( 'student', 'search', 'page'));

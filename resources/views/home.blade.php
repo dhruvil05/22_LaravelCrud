@@ -40,9 +40,9 @@
         </div>
     </div>
 
-    <div class="display my-4">
+    <div class="display my-4" >
 
-        <div class="row">
+        <div class="row pl-3" >
             {{ $student->links() }}
             @if ($page == ""  )
                 <p class="page">1</p>
@@ -105,13 +105,13 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="row">
+        <div class="row pl-3">
             {{ $student->links() }}
 
             @if ($page =="")
                 <p class="page">1</p>
             @else
-                <p class="page">{{ $page }}</p>
+                <p class="page">{{ $page }} </p>
             @endif
 
         </div>

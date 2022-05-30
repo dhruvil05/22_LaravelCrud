@@ -47,8 +47,10 @@
     </div>
 
     <div class="display my-4">
+        <div class="w-75">
+            <p class="num-rows">Number of Rows: <span class="">{{  "" .count($student) }}</span></p>
+        </div>
 
-       
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -97,7 +99,7 @@
                         <td class="action">
                             <a href="{{ url('trash/restore/' . $item->id) }}" class="btn btn-success btn-sm">Restore</a>
                             <a href="{{ url('trash/force-delete/' . $item->id) }}"
-                                onclick="return confirm('are you sure?')" class="btn btn-danger btn-sm">Delete</a>
+                                onclick="return confirm('It`s going to permenent Delete , are you sure?')" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                 @endforeach
