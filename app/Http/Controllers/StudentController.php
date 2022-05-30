@@ -12,15 +12,37 @@ class StudentController extends Controller
     public function index(Request $request)
     {
         $page = $request['page'];
-        $search = $request['search']?? "";
-        if($search != ""){
-            $student = Student::where('name', "LIKE", "%$search%")->orWhere('email', "LIKE", "%$search%")->orWhere('gender', "LIKE", "%$search%")->orWhere('dob', "LIKE", "%$search%")->orWhere('fav_sport', "LIKE", "%$search%")->orWhere('country', "LIKE", "%$search%")->orWhere('state', "LIKE", "%$search%")->orWhere('address', "LIKE", "%$search%")->orWhere('hobby', "LIKE", "%$search%")->orderByDesc('created_at')->simplePaginate(); 
-        }else{
+        $search = $request['search'] ?? "";
+        if ($search != "") {
+            $student = Student::where('name', "LIKE", "%$search%")->orWhere('email', "LIKE", "%$search%")->orWhere('gender', "LIKE", "%$search%")->orWhere('dob', "LIKE", "%$search%")->orWhere('fav_sport', "LIKE", "%$search%")->orWhere('country', "LIKE", "%$search%")->orWhere('state', "LIKE", "%$search%")->orWhere('address', "LIKE", "%$search%")->orWhere('hobby', "LIKE", "%$search%")->orderByDesc('created_at')->simplePaginate();
+        } else {
 
             $student = Student::orderByDesc('created_at')->simplePaginate(15);
         }
 
         return view('home', compact('student', 'search', 'page'));
+    }
+
+    public function allSession()
+    {   
+        $session = session()->all();
+        
+        return redirect('students');
+
+    }
+
+    public function setSession(Request $request)
+    {
+        $request->session()->put('nav', 'CRUD');
+        $request->session()->put('id', '123');
+        return redirect('students');
+    }
+
+    public function destroySession()
+    {
+        session()->forget(['nav', 'id']);
+        // session()->forget('user_id');
+        return redirect('students');
     }
 
     public function create()
@@ -30,7 +52,7 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
-       
+
         // p($request->all()); 
         // <--- or --->
         // echo "<pre>";

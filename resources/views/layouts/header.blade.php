@@ -92,14 +92,15 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        Dropdown link
+                        Session Demo link
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        {{-- <a class="dropdown-item" href="{{ url('students/get-all-session') }}">allSession</a> --}}
+                        <a class="dropdown-item" href="{{ url('students/set-session') }}">Login</a>
+                        <a class="dropdown-item" href="{{ url('students/destroy-session') }}">Logout</a>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
+  

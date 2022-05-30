@@ -16,7 +16,7 @@
                             <a href="{{ url('students') }}" class="btn btn-danger active float-right" role="button"
                                 aria-pressed="true">Back</a>
                         </div>
-                        <form action="{{ url('update-student/' . $student->id) }}" method="POST"
+                        <form action="{{ url('students/update-student/' . $student->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             {{-- @method('PUT') --}}

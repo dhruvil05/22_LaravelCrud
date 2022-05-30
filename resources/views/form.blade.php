@@ -17,7 +17,7 @@
                                 <a href="{{ url('students') }}" class="btn btn-danger active float-right" role="button"
                                             aria-pressed="true">Back</a>
                             </div>
-                            <form action="{{ url('/add-student ') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ url('students/add-student ') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="container">
             <div class="form-group">

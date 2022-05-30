@@ -16,6 +16,11 @@
         @if (session('failed'))
             <h6 class="alert alert-danger">{{ session('failed') }}</h6>
         @endif
+
+        {{-- <p>{{session('nav')}}</p>
+        <p>{{session('id')}}</p> --}}
+
+       
     </div>
 
     <div class="container my-3">
@@ -100,7 +105,7 @@
                         <td class="action">
                             <a href="{{ url('students/edit-student/' . $item->id) }}"
                                 class="btn btn-primary btn-sm">Edit</a>
-                            <a href="{{ url('delete-student/' . $item->id) }}" onclick="return confirm('are you sure?')"
+                            <a href="{{ url('students/delete-student/' . $item->id) }}" onclick="return confirm('are you sure?')"
                                 class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
