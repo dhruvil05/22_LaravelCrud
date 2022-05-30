@@ -86,7 +86,7 @@
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('student/add-student') }}">Register</a>
+                    <a class="nav-link" href="{{ url('students/add-student') }}">Register</a>
                 </li>
 
                 <li class="nav-item dropdown">

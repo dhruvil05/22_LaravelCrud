@@ -34,7 +34,7 @@
 
             </form>
             <div class="create">
-                <a href="{{ url('student/add-student') }}" class="btn btn-primary float-right">Add Student</a>
+                <a href="{{ url('students/add-student') }}" class="btn btn-primary float-right">Add Student</a>
             </div>
 
         </div>
@@ -44,7 +44,7 @@
     {{-- <div class="display my-4"> --}}
 
     <div class="table-responsive">
-        <div class="row">
+        <div class="row pl-3">
             {{ $student->links() }}
             @if ($page == '')
                 <p class="page">1</p>
@@ -98,7 +98,7 @@
                         </td>
                         <td>{{ $item->hobby }}</td>
                         <td class="action">
-                            <a href="{{ url('student/edit-student/' . $item->id) }}"
+                            <a href="{{ url('students/edit-student/' . $item->id) }}"
                                 class="btn btn-primary btn-sm">Edit</a>
                             <a href="{{ url('delete-student/' . $item->id) }}" onclick="return confirm('are you sure?')"
                                 class="btn btn-danger btn-sm">Delete</a>
@@ -108,7 +108,7 @@
             </tbody>
         </table>
 
-        <div class="row">
+        <div class="row pl-3">
             {{ $student->links() }}
             @if ($page == '')
                 <p class="page">1</p>
