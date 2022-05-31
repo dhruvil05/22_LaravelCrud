@@ -69,8 +69,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="{{ url('students') }}">
-            @if (session()->has('nav'))
-                {{ session()->get('nav') }}
+            @if (session()->has('user'))
+                {{ session()->get('user') }}
             @else
                 Guest
             @endif

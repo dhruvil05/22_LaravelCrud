@@ -23,6 +23,13 @@ class StudentController extends Controller
         return view('home', compact('student', 'search', 'page'));
     }
 
+    public function accessDenied()
+    {   
+        
+        return view('access');
+
+    }
+
     public function allSession()
     {   
         $session = session()->all();
@@ -33,14 +40,14 @@ class StudentController extends Controller
 
     public function setSession(Request $request)
     {
-        $request->session()->put('nav', 'CRUD');
+        $request->session()->put('user', 'CRUD');
         $request->session()->put('id', '123');
         return redirect('students');
     }
 
     public function destroySession()
     {
-        session()->forget(['nav', 'id']);
+        session()->forget(['user', 'id']);
         // session()->forget('user_id');
         return redirect('students');
     }

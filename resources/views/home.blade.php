@@ -17,7 +17,7 @@
             <h6 class="alert alert-danger">{{ session('failed') }}</h6>
         @endif
 
-        {{-- <p>{{session('nav')}}</p>
+        {{-- <p>{{session('user')}}</p>
         <p>{{session('id')}}</p> --}}
 
        
