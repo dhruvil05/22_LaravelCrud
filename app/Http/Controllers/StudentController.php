@@ -141,12 +141,7 @@ class StudentController extends Controller
     public function trash($id)
     {
         $student = Student::find($id);
-        // $destination = 'uploads/cover/' . $student->image;
-
-
-        // if (File::exists($destination)) {
-        //     File::delete($destination);
-        // }
+       
         $student->delete();
         return redirect('students')->with('status', 'Student Data Moved to Trash Successfully');
     }
@@ -165,14 +160,9 @@ class StudentController extends Controller
     }
 
     public function restore($id)
-    {
+    {   
         $student = Student::withTrashed()->find($id);
-        // $destination = 'uploads/cover/' . $student->image;
-
-
-        // if (File::exists($destination)) {
-        //     File::restore($destination);
-        // }
+     
         $student->restore();
         return redirect()->back()->with('status', 'Student Data Restored Successfully');
     }
