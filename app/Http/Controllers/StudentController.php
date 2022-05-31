@@ -24,18 +24,16 @@ class StudentController extends Controller
     }
 
     public function accessDenied()
-    {   
-        
-        return view('access');
+    {
 
+        return view('access');
     }
 
     public function allSession()
-    {   
+    {
         $session = session()->all();
-        
-        return redirect('students');
 
+        return redirect('students');
     }
 
     public function setSession(Request $request)
