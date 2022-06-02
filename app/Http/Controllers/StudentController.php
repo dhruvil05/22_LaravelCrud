@@ -4,38 +4,51 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
-
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\File;
 
 class StudentController extends Controller
 {
     public function index(Request $request)
     {
-        $page = $request['page'];
-        $search = $request['search'] ?? "";
-        if ($search != "") {
-            $student = Student::where('name', "LIKE", "%$search%")->orWhere('email', "LIKE", "%$search%")->orWhere('gender', "LIKE", "%$search%")->orWhere('dob', "LIKE", "%$search%")->orWhere('fav_sport', "LIKE", "%$search%")->orWhere('country', "LIKE", "%$search%")->orWhere('state', "LIKE", "%$search%")->orWhere('address', "LIKE", "%$search%")->orWhere('hobby', "LIKE", "%$search%")->orderByDesc('created_at')->simplePaginate();
-        } else {
+        if ($request->ajax()) {
+            $data = Student::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('gender', function ($row) {
+                    if ($row->gender == "M") {
+                        return "Male";
+                    } elseif ($row->gender == "F") {
+                        return "Female";
+                    } else {
+                        return "Other";
+                    }
+                })
+                ->addColumn('action', function ($row) {
 
-            $student = Student::orderByDesc('created_at')->simplePaginate(15);
+                    $btn = '<a href="students/edit-student/' . $row->id . '" class="edit btn btn-primary btn-sm">Edit</a>
+                           <a href="students/delete-student/' . $row->id . '" class="edit btn btn-danger btn-sm mt-2">Delete</a>';
+
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
         }
 
-        return view('home', compact('student', 'search', 'page'));
+        return view('home');
     }
 
     public function accessDenied()
-    {   
-        
-        return view('access');
+    {
 
+        return view('access');
     }
 
     public function allSession()
-    {   
+    {
         $session = session()->all();
-        
-        return redirect('students');
 
+        return redirect('students');
     }
 
     public function setSession(Request $request)

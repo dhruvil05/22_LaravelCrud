@@ -56,7 +56,7 @@
                     @enderror
                 </span>
             </div>
-            <div class="form-group">
+            <div class="form-group w-25">
                 <label for="dob">Date of Birth</label>
                 <input type="date" class="form-control dob" name="dob" aria-describedby="dobHelp" value="{{old('dob')}}" placeholder="Select Birth Date">
                 <span class="text-danger">
@@ -66,8 +66,8 @@
                 </span>
             </div>
             
-            <div class="form-check px-0">
-           
+            <div class="form-check px-0 d-flex" style="flex-direction:column;">
+                <label for="dob">Choose Gender :</label>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gender" id="gender1" value="M" checked>
                     <label class="form-check-label" for="gender1">
@@ -88,20 +88,20 @@
                 </div>
             </div>
 
-            <div class="form-check my-3 px-0">
-
+            <div class="form-check form-check-baseline my-3 px-0  d-flex justify-content-left " style="flex-direction: column" >
+                <label for="dob">Check your favourite Sport :</label>
                 <div class="form-check ">
                     <input class="form-check-input" type="checkbox" name="favsport" id="favsport1" value="cricket">
-                    <label class="form-check-label" for="favsport1">cricket</label>
-                  </div>
-                  <div class="form-check ">
+                    <label class="form-check-label" for="favsport1">Cricket</label>
+                </div>
+                <div class="form-check ">
                     <input class="form-check-input" type="checkbox" name="favsport" id="favsport2" value="badminton">
-                    <label class="form-check-label" for="favsport2">badminton</label>
-                  </div>
-                  <div class="form-check ">
+                    <label class="form-check-label" for="favsport2">Badminton</label>
+                </div>
+                <div class="form-check ">
                     <input class="form-check-input" type="checkbox" name="favsport" id="favsport3" value="football">
-                    <label class="form-check-label" for="favsport3">football</label>
-                  </div>
+                    <label class="form-check-label" for="favsport3">Football</label>
+                </div>
             </div>
             {{-- @include('components.array') --}}
             @php

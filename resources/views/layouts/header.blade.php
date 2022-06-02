@@ -11,6 +11,9 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     @stack('title')
+    @stack('meta')
+    @stack('link')
+    @stack('script')
     <style>
         .select {
             width: 550px;
@@ -96,8 +99,12 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         {{-- <a class="dropdown-item" href="{{ url('students/get-all-session') }}">allSession</a> --}}
-                        <a class="dropdown-item" href="{{ url('students/set-session') }}">Login</a>
+                        @if (session('user'))
                         <a class="dropdown-item" href="{{ url('students/destroy-session') }}">Logout</a>
+                        @else 
+                        <a class="dropdown-item" href="{{ url('students/set-session') }}">Login</a>
+
+                        @endif
                     </div>
                 </li>
             </ul>

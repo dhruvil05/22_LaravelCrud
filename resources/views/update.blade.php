@@ -42,7 +42,7 @@
                                     </span>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group w-25">
                                     <label for="dob">Date of Birth</label>
                                     <input type="date" class="form-control dob" name="dob" aria-describedby="dobHelp"
                                         value="{{ $student->dob }}">
@@ -53,8 +53,8 @@
                                     </span>
                                 </div>
 
-                                <div class="form-check px-0">
-
+                                <div class="form-check px-0 d-flex" style="flex-direction:column;">
+                                    <label for="dob">Choose Gender :</label>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="gender" id="gender1"
                                             @if ($student->gender == 'M') checked @endif value="M">
@@ -78,8 +78,8 @@
                                     </div>
                                 </div>
 
-                                <div class="form-check my-3 px-0">
-
+                                <div class="form-check form-check-baseline my-3 px-0  d-flex justify-content-left " style="flex-direction: column" >
+                                    <label for="dob">Check your favourite Sport :</label>
                                     <div class="form-check ">
                                         <input class="form-check-input" type="checkbox" name="favsport" id="favsport1"
                                             @if ($student->fav_sport == 'cricket') checked @endif value="cricket">
