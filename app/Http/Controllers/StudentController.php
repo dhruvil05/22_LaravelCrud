@@ -24,6 +24,8 @@ class StudentController extends Controller
                         return "Other";
                     }
                 })
+                ->editColumn('dob', function($row){ $formatedDate = get_formatted_date($row->dob, 'd/m/Y'); return $formatedDate; })
+                ->editColumn('created_at', function($row){ $formatedDate = get_formatted_date($row->created_at, 'd/m/Y'); return $formatedDate; })
                 ->addColumn('action', function ($row) {
 
                     $btn = '<a href="students/edit-student/' . $row->id . '" class="edit btn btn-primary btn-sm">Edit</a>

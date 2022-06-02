@@ -92,20 +92,19 @@
                     <a class="nav-link" href="{{ url('students/add-student') }}">Register</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                <li class="nav-item ">
+                    {{-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         Session Demo link
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    </a> --}}
+                    {{-- <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> --}}
                         {{-- <a class="dropdown-item" href="{{ url('students/get-all-session') }}">allSession</a> --}}
                         @if (session('user'))
-                        <a class="dropdown-item" href="{{ url('students/destroy-session') }}">Logout</a>
+                        <a class="nav-link" href="{{ url('students/destroy-session') }}">Logout</a>
                         @else 
-                        <a class="dropdown-item" href="{{ url('students/set-session') }}">Login</a>
-
+                        <a class="nav-link" href="{{ url('students/set-session') }}">Login</a>
                         @endif
-                    </div>
+                    {{-- </div> --}}
                 </li>
             </ul>
         </div>
