@@ -23,7 +23,7 @@ class StudentSeeder extends Seeder
             $student->password = $faker->password;
             $student->dob = $faker->date;
             $student->gender = "M";
-            $student->fav_sport = "cricket";
+            $student->favsport = "cricket";
             $student->country = $faker->country;
             $student->state = $faker->state;
             $student->address = $faker->address;

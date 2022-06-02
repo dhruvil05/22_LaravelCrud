@@ -15,7 +15,7 @@ class Student extends Model
         'password',
         'dob',
         'gender',
-        'fav_sport',
+        'favsport',
         'country',
         'state',
         'address',
@@ -28,7 +28,11 @@ class Student extends Model
     {
         $this->attributes['name'] = ucwords($value);
     }
-
+    public function setFavsportAttribute($value)
+    {
+        $this->attributes['favsport'] = json_encode($value);
+    }
+    
     // public function getDobAttribute($value)
     // {
     //     return date("d/m/Y", strtotime($value));

@@ -78,23 +78,26 @@
                                     </div>
                                 </div>
 
-                                <div class="form-check form-check-baseline my-3 px-0  d-flex justify-content-left " style="flex-direction: column" >
-                                    <label for="dob">Check your favourite Sport :</label>
-                                    <div class="form-check ">
-                                        <input class="form-check-input" type="checkbox" name="favsport" id="favsport1"
-                                            @if ($student->fav_sport == 'cricket') checked @endif value="cricket">
-                                        <label class="form-check-label" for="favsport1">cricket</label>
-                                    </div>
-                                    <div class="form-check ">
-                                        <input class="form-check-input" type="checkbox" name="favsport" id="favsport2"
-                                            @if ($student->fav_sport == 'badminton') checked @endif value="badminton">
-                                        <label class="form-check-label" for="favsport2">badminton</label>
-                                    </div>
-                                    <div class="form-check ">
-                                        <input class="form-check-input" type="checkbox" name="favsport" id="favsport3"
-                                            @if ($student->fav_sport == 'football') checked @endif value="football">
-                                        <label class="form-check-label" for="favsport3">football</label>
-                                    </div>
+                                <div class="form-check form-check-baseline my-3 px-0  d-flex justify-content-left "
+                                    style="flex-direction: column">
+                                    
+                                        <label for="dob">Check your favourite Sport :</label>
+                                        <div class="form-check ">
+                                            <input class="form-check-input" type="checkbox" name="favsport[]" id="favsport1"
+                                              value="cricket">
+                                            <label class="form-check-label" for="favsport1">cricket</label>
+                                        </div>
+                                        <div class="form-check ">
+                                            <input class="form-check-input" type="checkbox" name="favsport[]" id="favsport2"
+                                                value="badminton">
+                                            <label class="form-check-label" for="favsport2">badminton</label>
+                                        </div>
+                                        <div class="form-check ">
+                                            <input class="form-check-input" type="checkbox" name="favsport"[] id="favsport3"
+                                            value="football">
+                                            <label class="form-check-label" for="favsport3">football</label>
+                                        </div>
+                                    
                                 </div>
                                 {{-- @include('components.array') --}}
                                 @php

@@ -33,7 +33,7 @@ class StudentController extends Controller
                                 return true;
                             }else if (Str::contains(Str::lower($row['gender']), Str::lower($request->get('search')))) {
                                 return true;
-                            }else if (Str::contains(Str::lower($row['fav_sport']), Str::lower($request->get('search')))) {
+                            }else if (Str::contains(Str::lower($row['favsport']), Str::lower($request->get('search')))) {
                                 return true;
                             }else if (Str::contains(Str::lower($row['country']), Str::lower($request->get('search')))) {
                                 return true;
@@ -52,7 +52,7 @@ class StudentController extends Controller
                         });
                     }
                 })
-                ->addColumn('gender', function ($row) {
+                ->editColumn('gender', function ($row) {
                     if ($row->gender == "M") {
                         return "Male";
                     } elseif ($row->gender == "F") {
@@ -137,7 +137,7 @@ class StudentController extends Controller
         $student->password = $request['password'];
         $student->dob = $request['dob'];
         $student->gender = $request['gender'];
-        $student->fav_sport = $request['favsport'];
+        $student->favsport = $request['favsport'];
         $student->country = $request['country'];
         $student->state = $request['state'];
         $student->address = $request['address'];
@@ -158,6 +158,7 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student = Student::find($id);
+   
         return view('update', compact('student'));
     }
 
@@ -182,7 +183,7 @@ class StudentController extends Controller
         $student->email = $request->input('email');
         $student->dob = $request->input('dob');
         $student->gender = $request->input('gender');
-        $student->fav_sport = $request->input('favsport');
+        $student->favsport =$request->input('favsport');
         $student->country = $request->input('country');
         $student->state = $request->input('state');
         $student->address = $request->input('address');

@@ -59,7 +59,7 @@
                 <th>Email</th>
                 <th>DOB</th>
                 <th>Gender</th>
-                <th>Fav_sport</th>
+                <th>Favsport</th>
                 <th>Country</th>
                 <th>State</th>
                 <th>Address</th>
@@ -115,8 +115,9 @@
 
                     },
                     {
-                        data: 'fav_sport',
-                        name: 'fav_sport'
+                        data: 'favsport',
+                        name: 'favsport',
+                      
                     },
                     {
                         data: 'country',
