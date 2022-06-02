@@ -8,10 +8,9 @@
 @push('link')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-    {{-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> --}}
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <link rel="https://cdn.datatables.net/rowgroup/1.1.1/css/rowGroup.bootstrap4.min.css" />
-
 @endpush
 @push('script')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -41,6 +40,10 @@
 
             <h4>Laravel CRUd</h4>
 
+            <div class="search">
+                <input type="search" name="searchIn" class="form-control search" placeholder="Search">
+            </div>
+
             <div class="create">
                 <a href="{{ url('students/add-student') }}" class="btn btn-primary float-right">Add Student</a>
             </div>
@@ -63,7 +66,7 @@
                 <th>Image</th>
                 <th>Hobby</th>
                 <th>Created_at</th>
-                <th >Action</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -78,10 +81,19 @@
                 responsive: true,
                 processing: true,
                 serverSide: true,
+                searching:false,
                 "order": [
                     [11, "desc"]
                 ],
-                ajax: "{{ url('students') }}",
+
+                ajax: {
+                    url: "{{ url('students') }}",
+
+                    data: function(d) {
+                        // d.string = $('.search').val(),
+                        d.search = $('input[type="search"]').val()
+                    }
+                },
                 columns: [
 
                     {
@@ -131,7 +143,7 @@
                     {
                         data: 'hobby',
                         name: 'hobby',
-                       
+
 
                     },
                     {
@@ -145,6 +157,10 @@
                         searchable: false
                     },
                 ]
+            });
+            $(".search").keyup(function() {
+                // console.log($('.search').val());
+                table.draw();
             });
 
         });

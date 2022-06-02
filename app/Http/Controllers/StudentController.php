@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class StudentController extends Controller
 {
@@ -15,6 +16,42 @@ class StudentController extends Controller
             $data = Student::latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->filter(function ($instance) use ($request) {
+                    // if (!empty($request->get('email'))) {
+                    //     $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                    //         return Str::contains($row['email'], $request->get('email')) ? true : false;
+                    //     });
+                    // }
+
+                    if (!empty($request->get('search'))) {
+                        $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                            if (Str::contains(Str::lower($row['name']), Str::lower($request->get('search')))) {
+                                return true;
+                            } else if (Str::contains(Str::lower($row['email']), Str::lower($request->get('search')))) {
+                                return true;
+                            } else if (Str::contains(Str::lower($row['dob']), Str::lower($request->get('search')))) {
+                                return true;
+                            }else if (Str::contains(Str::lower($row['gender']), Str::lower($request->get('search')))) {
+                                return true;
+                            }else if (Str::contains(Str::lower($row['fav_sport']), Str::lower($request->get('search')))) {
+                                return true;
+                            }else if (Str::contains(Str::lower($row['country']), Str::lower($request->get('search')))) {
+                                return true;
+                            }else if (Str::contains(Str::lower($row['state']), Str::lower($request->get('search')))) {
+                                return true;
+                            }else if (Str::contains(Str::lower($row['address']), Str::lower($request->get('search')))) {
+                                return true;
+                            }else if (Str::contains(Str::lower($row['hobby']), Str::lower($request->get('search')))) {
+                                return true;
+                            }else if (Str::contains(Str::lower($row['created_at']), Str::lower($request->get('search')))) {
+                                return true;
+                            }
+                            
+
+                            return false;
+                        });
+                    }
+                })
                 ->addColumn('gender', function ($row) {
                     if ($row->gender == "M") {
                         return "Male";
@@ -24,8 +61,14 @@ class StudentController extends Controller
                         return "Other";
                     }
                 })
-                ->editColumn('dob', function($row){ $formatedDate = get_formatted_date($row->dob, 'd/m/Y'); return $formatedDate; })
-                ->editColumn('created_at', function($row){ $formatedDate = get_formatted_date($row->created_at, 'd/m/Y'); return $formatedDate; })
+                ->editColumn('dob', function ($row) {
+                    $formatedDate = get_formatted_date($row->dob, 'd/m/Y');
+                    return $formatedDate;
+                })
+                ->editColumn('created_at', function ($row) {
+                    $formatedDate = get_formatted_date($row->created_at, 'd/m/Y');
+                    return $formatedDate;
+                })
                 ->addColumn('action', function ($row) {
 
                     $btn = '<a href="students/edit-student/' . $row->id . '" class="edit btn btn-primary btn-sm">Edit</a>
