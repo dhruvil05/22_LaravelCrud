@@ -83,17 +83,17 @@
                                     
                                         <label for="dob">Check your favourite Sport :</label>
                                         <div class="form-check ">
-                                            <input class="form-check-input" type="checkbox" name="favsport[]" id="favsport1"
+                                            <input class="form-check-input" type="checkbox" name="favsport[]" id="favsport1" {{ in_array('cricket', $sport) ? 'checked' : '' }}
                                               value="cricket">
                                             <label class="form-check-label" for="favsport1">cricket</label>
                                         </div>
                                         <div class="form-check ">
-                                            <input class="form-check-input" type="checkbox" name="favsport[]" id="favsport2"
+                                            <input class="form-check-input" type="checkbox" name="favsport[]" id="favsport2"{{ in_array('badminton', $sport) ? 'checked' : '' }}
                                                 value="badminton">
                                             <label class="form-check-label" for="favsport2">badminton</label>
                                         </div>
                                         <div class="form-check ">
-                                            <input class="form-check-input" type="checkbox" name="favsport"[] id="favsport3"
+                                            <input class="form-check-input" type="checkbox" name="favsport[]" id="favsport3" {{ in_array('football', $sport) ? 'checked' : '' }}
                                             value="football">
                                             <label class="form-check-label" for="favsport3">football</label>
                                         </div>

@@ -28,10 +28,10 @@ class Student extends Model
     {
         $this->attributes['name'] = ucwords($value);
     }
-    public function setFavsportAttribute($value)
-    {
-        $this->attributes['favsport'] = json_encode($value);
-    }
+    // public function setFavsportAttribute($value)
+    // {
+    //     $this->attributes['favsport'] = json_encode($value);
+    // }
     
     // public function getDobAttribute($value)
     // {

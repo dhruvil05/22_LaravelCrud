@@ -137,7 +137,7 @@ class StudentController extends Controller
         $student->password = $request['password'];
         $student->dob = $request['dob'];
         $student->gender = $request['gender'];
-        $student->favsport = $request['favsport'];
+        $student->favsport = implode(',', (array)$request['favsport']);
         $student->country = $request['country'];
         $student->state = $request['state'];
         $student->address = $request['address'];
@@ -158,8 +158,8 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student = Student::find($id);
-   
-        return view('update', compact('student'));
+        $sport = explode(',', $student->favsport);
+        return view('update', compact('student','sport'));
     }
 
     public function update(Request $request, $id)
@@ -183,7 +183,7 @@ class StudentController extends Controller
         $student->email = $request->input('email');
         $student->dob = $request->input('dob');
         $student->gender = $request->input('gender');
-        $student->favsport =$request->input('favsport');
+        $student->favsport =implode(',',(array)$request->input('favsport'));
         $student->country = $request->input('country');
         $student->state = $request->input('state');
         $student->address = $request->input('address');
