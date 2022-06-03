@@ -93,7 +93,7 @@
                                             <label class="form-check-label" for="favsport2">badminton</label>
                                         </div>
                                         <div class="form-check ">
-                                            <input class="form-check-input" type="checkbox" name="favsport"[] id="favsport3"
+                                            <input class="form-check-input" type="checkbox" name="favsport[]" id="favsport3"
                                             value="football">
                                             <label class="form-check-label" for="favsport3">football</label>
                                         </div>
