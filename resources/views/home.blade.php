@@ -81,7 +81,9 @@
                 responsive: true,
                 processing: true,
                 serverSide: true,
-                searching:false,
+                // "bSort": false,
+                searching: false,
+                
                 "order": [
                     [11, "desc"]
                 ],
@@ -117,7 +119,7 @@
                     {
                         data: 'favsport',
                         name: 'favsport',
-                      
+
                     },
                     {
                         data: 'country',

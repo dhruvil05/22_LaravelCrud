@@ -61,6 +61,15 @@
             margin-left: 5px;
         }
 
+        table.dataTable thead .sorting:after,
+        table.dataTable thead .sorting_asc:after,
+        table.dataTable thead .sorting_desc:after,
+        table.dataTable thead .sorting:before,
+        table.dataTable thead .sorting_asc:before,
+        table.dataTable thead .sorting_desc:before {
+            display: none;
+        }
+
         /* table {
             position: relative;
             right: 62px;
@@ -98,15 +107,14 @@
                         Session Demo link
                     </a> --}}
                     {{-- <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> --}}
-                        {{-- <a class="dropdown-item" href="{{ url('students/get-all-session') }}">allSession</a> --}}
-                        @if (session('user'))
+                    {{-- <a class="dropdown-item" href="{{ url('students/get-all-session') }}">allSession</a> --}}
+                    @if (session('user'))
                         <a class="nav-link" href="{{ url('students/destroy-session') }}">Logout</a>
-                        @else 
+                    @else
                         <a class="nav-link" href="{{ url('students/set-session') }}">Login</a>
-                        @endif
+                    @endif
                     {{-- </div> --}}
                 </li>
             </ul>
         </div>
     </nav>
-  
