@@ -71,7 +71,7 @@ class StudentController extends Controller
                 })
                 ->addColumn('action', function ($row) {
 
-                    $btn = '<a href="students/edit-student/' . $row->id . '" class="edit btn btn-primary btn-sm">Edit</a>
+                    $btn = '<a href="   " class="edit btn btn-primary btn-sm">Edit</a>
                            <a href="students/delete-student/' . $row->id . '" class="edit btn btn-danger btn-sm mt-2">Delete</a>';
 
                     return $btn;
