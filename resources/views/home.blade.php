@@ -92,7 +92,7 @@
                     url: "{{ url('students') }}",
 
                     data: function(d) {
-                        // d.string = $('.search').val(),
+                        // d.string = $('.search').val(),   
                         d.search = $('input[type="search"]').val()
                     }
                 },

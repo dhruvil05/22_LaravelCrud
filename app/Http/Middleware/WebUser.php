@@ -20,5 +20,6 @@ class WebUser
         if(session()->has('user'))
         return $next($request);
         else 
-        return redirect('students/no-access');    }
+        return redirect('students/no-access');   
+    }
 }

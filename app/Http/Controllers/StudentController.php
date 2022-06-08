@@ -92,7 +92,7 @@ class StudentController extends Controller
     public function allSession()
     {
         $session = session()->all();
-
+        
         return redirect('students');
     }
 
