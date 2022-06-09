@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 // Student Image CRUD
 Route::group(["prefix" => "/students"], function () {
-    Route::get('no-access', [StudentController::class, 'accessDenied']);
+    Route::get('/no-access', [StudentController::class, 'accessDenied']);
 
     Route::get('/', [StudentController::class, 'index'])->middleware('guard');                  // Add middleware 
     Route::get('add-student', [StudentController::class, 'create'])->middleware('guard');       // Add middleware 
