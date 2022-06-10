@@ -51,7 +51,7 @@
         </div>
 
     </div>
-    <table class="table table-bordered table-responsive data-table">
+    <table class="table table-bordered  data-table">
         <thead>
             <tr>
 
