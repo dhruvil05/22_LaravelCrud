@@ -4,6 +4,7 @@
     <title>Registration</title>
     @endpush
     @section('main.section')
+    {{-- <h4>{{$uri}}  </h4> --}}
         
         <div class="container">
             <div class="row">
@@ -69,19 +70,19 @@
             <div class="form-check px-0 d-flex" style="flex-direction:column;">
                 <label for="dob">Choose Gender :</label>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="gender1" value="M" checked>
+                    <input class="form-check-input" type="radio" name="gender" id="gender1" value="M" @if(old('gender')=="M") checked @endif>
                     <label class="form-check-label" for="gender1">
                         Male
                     </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="gender2" value="F">
+                    <input class="form-check-input" type="radio" name="gender" id="gender2" value="F" @if(old('gender')=="F") checked @endif>
                     <label class="form-check-label" for="gender2">
                         Female
                     </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="gender3" value="O">
+                    <input class="form-check-input" type="radio" name="gender" id="gender3" value="O" @if(old('gender')=="O") checked @endif>
                     <label class="form-check-label" for="gender3">
                         Other
                     </label>

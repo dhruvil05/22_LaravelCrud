@@ -10,10 +10,21 @@ use Illuminate\Support\Str;
 
 class StudentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->heading = "CRUd";
+        // $this->middleware('guard');
+        // $this->middleware('guard')->only('index');
+        // $this->middleware('subscribed')->except('store');
+    }
+
     public function index(Request $request)
     {
         if ($request->ajax()) {
+            
             $data = Student::latest()->get();
+            
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->filter(function ($instance) use ($request) {
@@ -31,22 +42,22 @@ class StudentController extends Controller
                                 return true;
                             } else if (Str::contains(Str::lower($row['dob']), Str::lower($request->get('search')))) {
                                 return true;
-                            }else if (Str::contains(Str::lower($row['gender']), Str::lower($request->get('search')))) {
+                            } else if (Str::contains(Str::lower($row['gender']), Str::lower($request->get('search')))) {
                                 return true;
-                            }else if (Str::contains(Str::lower($row['favsport']), Str::lower($request->get('search')))) {
+                            } else if (Str::contains(Str::lower($row['favsport']), Str::lower($request->get('search')))) {
                                 return true;
-                            }else if (Str::contains(Str::lower($row['country']), Str::lower($request->get('search')))) {
+                            } else if (Str::contains(Str::lower($row['country']), Str::lower($request->get('search')))) {
                                 return true;
-                            }else if (Str::contains(Str::lower($row['state']), Str::lower($request->get('search')))) {
+                            } else if (Str::contains(Str::lower($row['state']), Str::lower($request->get('search')))) {
                                 return true;
-                            }else if (Str::contains(Str::lower($row['address']), Str::lower($request->get('search')))) {
+                            } else if (Str::contains(Str::lower($row['address']), Str::lower($request->get('search')))) {
                                 return true;
-                            }else if (Str::contains(Str::lower($row['hobby']), Str::lower($request->get('search')))) {
+                            } else if (Str::contains(Str::lower($row['hobby']), Str::lower($request->get('search')))) {
                                 return true;
-                            }else if (Str::contains(Str::lower($row['created_at']), Str::lower($request->get('search')))) {
+                            } else if (Str::contains(Str::lower($row['created_at']), Str::lower($request->get('search')))) {
                                 return true;
                             }
-                            
+
 
                             return false;
                         });
@@ -79,8 +90,10 @@ class StudentController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
+        $heading = $this->heading;
+        $uri = $request->path();
 
-        return view('home');
+        return view('home', compact("heading", 'uri'));
     }
 
     public function accessDenied()
@@ -92,7 +105,7 @@ class StudentController extends Controller
     public function allSession()
     {
         $session = session()->all();
-        
+
         return redirect('students');
     }
 
@@ -100,7 +113,8 @@ class StudentController extends Controller
     {
         $request->session()->put('user', 'CRUD');
         $request->session()->put('id', '123');
-        return redirect('students');
+
+        return redirect('students')->with('name');
     }
 
     public function destroySession()
@@ -110,8 +124,25 @@ class StudentController extends Controller
         return redirect('students');
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        // $uri = $request->path();
+        // if ($request->is('students/*')) {
+        // $uri = $request->path();
+
+        // }
+        // if ($request->isMethod('get')) {
+            // $uri = $request->ip();
+            // $uri = $request->method();
+            // $uri = $request->flash([]);
+
+
+        // }
+        // $uri = $request->url();
+        // $uri = $request->fullUrl();
+
+        // return view('form', compact('uri'));
+
         return view('form');
     }
 
@@ -159,7 +190,7 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
         $sport = explode(',', $student->favsport);
-        return view('update', compact('student','sport'));
+        return view('update', compact('student', 'sport'));
     }
 
     public function update(Request $request, $id)
@@ -183,7 +214,7 @@ class StudentController extends Controller
         $student->email = $request->input('email');
         $student->dob = $request->input('dob');
         $student->gender = $request->input('gender');
-        $student->favsport =implode(',',(array)$request->input('favsport'));
+        $student->favsport = implode(',', (array)$request->input('favsport'));
         $student->country = $request->input('country');
         $student->state = $request->input('state');
         $student->address = $request->input('address');

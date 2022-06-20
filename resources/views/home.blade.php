@@ -35,10 +35,13 @@
 
 
     </div>
+      
     <div class="container my-3">
         <div class="row d-flex justify-content-between">
 
-            <h4>Laravel CRUd</h4>
+            <h4>Laravel {{$heading}}  </h4>
+            {{-- <h4>{{$uri}}  </h4> --}}
+
 
             <div class="search">
                 <input type="search" name="searchIn" class="form-control search" placeholder="Search">
