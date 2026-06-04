@@ -1,64 +1,142 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Laravel CRUD Application
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel 8 CRUD project built for managing records with a simple, clean interface. This repository is configured to run on XAMPP / local PHP development environments and includes Laravel UI, Bootstrap, Vue 2, and standard Laravel authentication scaffolding.
 
-## About Laravel
+## Project Overview
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Laravel 8 application
+- CRUD operations for models using Eloquent
+- MySQL database support via XAMPP / local environment
+- Asset compilation with Laravel Mix, Bootstrap 5, and Vue 2
+- Includes custom helper functions in `app/helper.php`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requirements
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 7.3 or higher
+- Composer
+- Node.js and NPM
+- MySQL (via XAMPP, WAMP, or native installation)
+- Git (optional)
 
-## Learning Laravel
+## Setup Guide
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. Install PHP dependencies
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Open a terminal in the project root and run:
 
-## Laravel Sponsors
+```bash
+composer install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 2. Install JavaScript dependencies
 
-### Premium Partners
+```bash
+npm install
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### 3. Copy environment file
 
-## Contributing
+```bash
+cp .env.example .env
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+On Windows, if `cp` is not available, use:
 
-## Code of Conduct
+```powershell
+copy .env.example .env
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 4. Configure database
 
-## Security Vulnerabilities
+Edit `.env` and set your MySQL credentials. Example:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravelcrud
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 5. Generate application key
+
+```bash
+php artisan key:generate
+```
+
+### 6. Run database migrations
+
+```bash
+php artisan migrate
+```
+
+If you have seeders available, run:
+
+```bash
+php artisan db:seed
+```
+
+### 7. Build assets
+
+For development:
+
+```bash
+npm run dev
+```
+
+For production:
+
+```bash
+npm run production
+```
+
+### 8. Start the application
+
+Use the Laravel development server:
+
+```bash
+php artisan serve
+```
+
+Then open the application in your browser at:
+
+```text
+http://127.0.0.1:8000
+```
+
+If you are using XAMPP and the project is placed inside `htdocs`, you can also access it through your local Apache URL, for example:
+
+```text
+http://localhost/22_LaravelCrud/public
+```
+
+## Common Commands
+
+- `php artisan serve` — run the local development server
+- `php artisan migrate` — apply database migrations
+- `php artisan migrate:fresh --seed` — reset database and run seeders
+- `npm run dev` — compile frontend assets for development
+- `npm run production` — compile frontend assets for production
+
+## Project Structure
+
+- `app/` — application logic, controllers, middleware, models
+- `resources/views/` — Blade templates
+- `routes/web.php` — web routes
+- `public/` — web server document root
+- `database/migrations/` — migration files
+- `database/seeders/` — database seeder classes
+- `webpack.mix.js` — Laravel Mix asset pipeline configuration
+
+## Notes
+
+- The `uploads/` folder under `public/` is available for file storage if the application uses file uploads.
+- If you need to clear caches after changing configuration, use:
+  - `php artisan config:cache`
+  - `php artisan route:cache`
+  - `php artisan view:clear`
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open source and available under the [MIT license](https://opensource.org/licenses/MIT).
